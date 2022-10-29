@@ -13,3 +13,28 @@ sudo apt install -y jenkins
 #Re-directing Port
 sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
 sudo sh -c "iptables-save > /etc/iptables.rules"
+
+Sync Jenkins Workspace with 2 different servers (Active and Passive)
+(Works with Amazon Linux and Ubuntu 16.04)
+
+Install NFS to mount.
+apt install -y nfs-common
+
+adding DNS to sync workspace using AWS EFS
+aws EFS DNS name    fs-fa0cc77a.efs.us-east-1.amazonaws.com:/ /var/lib/jenkins nfs defaults 0 0
+copy this in 2 servers in /etc/fstab
+mount -a         -> it will mount in diskspace
+
+JENKINS HIGH-AVAILIBILITY:
+
+Create a user and login with that user and create the token which can be used to reload the config rather than restart the server. Username used for this example is reloadconfig
+
+Make sure you have restarted the secondary jenkins service so that the user is visible to secondary.
+
+Download the jenkins-cli in /var/lib/jenkins
+wget http://<<ip>>:8080/jnlpJars/jenkins-cli.jar
+
+Using the token genarated from user create a cronjob to run every minute so that without restarting service Jobs will sync with 2 servers
+
+java -jar /jenkins-cli.jar -s http://<ip>:8080 -auth reloadconfig:11753e581628002506468ce3e44a8a1076 reload-configuration
+
