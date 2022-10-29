@@ -36,5 +36,5 @@ wget http://<<ip>>:8080/jnlpJars/jenkins-cli.jar
 
 Using the token genarated from user create a cronjob to run every minute so that without restarting service Jobs will sync with 2 servers
 
-java -jar /jenkins-cli.jar -s http://<ip>:8080 -auth reloadconfig:11753e581628002506468ce3e44a8a1076 reload-configuration
+java -jar /var/lib/jenkins/jenkins-cli.jar -s http://<ip>:8080 -auth reloadconfig:11753e581628002506468ce3e44a8a1076 reload-configuration
 
