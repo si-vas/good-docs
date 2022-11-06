@@ -1,0 +1,16 @@
+#Tomcat Installation Guide
+cd /opt
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.zip
+unzip apache-tomcat-9.0.68.zip
+mv apache-tomcat-9.0.68 tomcat
+cd /opt/tomcat/bin
+chmod +x ./catalina.sh
+./startup.sh
+
+#To access Manager App on web browser tomcat server modify context.xml in webapps folders
+nano /opt/tomcat/webapps/host-manager/META-INF/context.xml   <!-- on allow="127.... -->
+nano /opt/tomcat/webapps/manager/META-INF/context.xml  <!-- on allow="127.... -->
+
+#restart tomcat by 2 steps
+bash /opt/tomcat/bin/shutdown.sh
+bash /opt/tomcat/bin/startup.sh
