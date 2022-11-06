@@ -22,3 +22,9 @@ source ./bashrc or . ./bashrc
 #If run Maven Project Configure set Maven Home Page in jenkins Global Configuration
 Name - maven
 Path - /opt/maven
+
+#While Build on Jenkins use below command
+Root POM
+pom.xml
+Goals and options
+clean install
