@@ -11,6 +11,15 @@ chmod +x ./catalina.sh
 nano /opt/tomcat/webapps/host-manager/META-INF/context.xml   <!-- on allow="127.... -->
 nano /opt/tomcat/webapps/manager/META-INF/context.xml  <!-- on allow="127.... -->
 
+#Update users information in the tomcat-users.xml file goto tomcat home directory and Add below users to conf/tomcat-users.xml file
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-status"/>
+<user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+<user username="deployer" password="deployer" roles="manager-script"/>
+<user username="tomcat" password="s3cret" roles="manager-gui"/>
+
 #restart tomcat by 2 steps
 bash /opt/tomcat/bin/shutdown.sh
 bash /opt/tomcat/bin/startup.sh
