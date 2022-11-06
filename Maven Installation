@@ -1,0 +1,20 @@
+# Installation of Maven to Ubuntu
+cd /opt
+wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.zip
+unzip apache-maven-3.8.6-bin.zip
+mv apache-maven-3.8.6-bin maven
+
+#Check Maven version to confirm
+/opt/maven/bin/mvn -v
+
+#Export Maven home directory in .bashrc_profile
+nano .bashrc
+# set java Home Path
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+MAVEN_HOME=/opt/maven
+export JAVA_HOME
+export MAVEN_HOME
+PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$PATH
+export PATH
+------- paste this on ennd of the line on bashrc and save
+source ./bashrc or . ./bashrc
