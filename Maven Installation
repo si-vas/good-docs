@@ -18,3 +18,7 @@ PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$PATH
 export PATH
 ------- paste this on ennd of the line on bashrc and save
 source ./bashrc or . ./bashrc
+
+#If run Maven Project Configure set Maven Home Page in jenkins Global Configuration
+Name - maven
+Path - /opt/maven
