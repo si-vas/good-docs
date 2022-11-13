@@ -1,10 +1,14 @@
 #Tomcat Installation Guide
+#make sure to install Java it is the pre-requires to run tomcat also setup JAVA_HOME in .bashrc to startup server
+
 cd /opt
 wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.zip
 unzip apache-tomcat-9.0.68.zip
 mv apache-tomcat-9.0.68 tomcat
 cd /opt/tomcat/bin
-chmod +x ./catalina.sh
+chmod u+x ./catalina.sh
+chmod u+x ./startup.sh
+chmod u+x ./shutdown.sh
 ./startup.sh
 
 #To access Manager App on web browser tomcat server modify context.xml in webapps folders
