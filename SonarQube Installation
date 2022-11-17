@@ -1,0 +1,77 @@
+**Mandatory to install openjdk11 to run sonarqube
+SonarQube-SG ports needs to be open.
+ssh 22,
+PostgreSQL 5432,
+Sonarqube 9000,
+http 80.
+
+create user sonar with encrypted password 'sonar';
+alter user sonar with superuser
+\du   --> to check if user is created 
+\q    --> exit from db
+nano /etc/postgresql/12/main/pg_hba.conf --> end of the file change all to trust to access db from anywhere
+
+# Database administrative login by Unix domain socket
+local   all             postgres                                trust
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+host    all             all             ::1/128                 trust
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     trust
+host    replication     all             127.0.0.1/32            trust
+host    replication     all             ::1/128                 trust
+
+again switch to postgres user and open psql
+
+su - postgres
+psql
+
+and then create a database with name sonar
+
+create database sonar;
+
+\l    --> list all databases
+
+grant all privileges on database sonar to sonar;
+
+
+SonarQube Instalation steps
+
+cd /opt
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.7.1.62043.zip
+unzip sonarqube-9.7.1.62043.zip
+#SonarQube will work with root user so create a new user sonar
+useradd sonar
+chown -R sonar:sonar /opt/sonarqube-9.7.1.62043
+su sonar
+bash
+cd /opt/sonarqube-9.7.1.62043
+cd conf/
+nano sonar.properties
+sonar.jdbc.username=sonar
+sonar.jdbc.password=sonar
+sonar.jdbc.url=jdbc:postgresql://localhost/sonar
+sonar.path.data=/opt/sonarqube/data
+sonar.path.temp=/opt/sonarqube/temp
+
+nano /etc/sysctl.conf
+vm.max_map_count=524288
+fs.file-max=131072
+
+sysctl -p
+
+nano /etc/security/limits.conf
+sonar hard nofile 65535
+sonar soft nofile 65535
+
+#to start SonarQube
+cd /opt/sonarqube/bin/linux-x86-64
+./sonar.sh
+
