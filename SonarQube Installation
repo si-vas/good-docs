@@ -78,3 +78,7 @@ sonar soft nofile 65535
 cd /opt/sonarqube/bin/linux-x86-64
 ./sonar.sh start
 
+#check if SonarQube started 
+ps -ef | grep sonar
+
+cat /opt/sonarqube/logs/sonar.log
