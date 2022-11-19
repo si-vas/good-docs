@@ -44,7 +44,6 @@ create database sonar;
 
 grant all privileges on database sonar to sonar;
 
-
 SonarQube Instalation steps
 
 cd /opt
@@ -82,3 +81,9 @@ cd /opt/sonarqube/bin/linux-x86-64
 ps -ef | grep sonar
 
 cat /opt/sonarqube/logs/sonar.log
+
+#open SonarQube in browser
+<public_ip>:9000
+#default username and password
+admin
+admin
