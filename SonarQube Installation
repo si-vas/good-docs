@@ -5,7 +5,7 @@ PostgreSQL 5432,
 Sonarqube 9000,
 http 80.
 
-apt install unzip openjdk-11-jdk postgres -y
+apt install unzip openjdk-11-jdk postgresql -y
 su - postgres
 psql
 create user sonar with encrypted password 'sonar';
