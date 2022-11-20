@@ -50,7 +50,7 @@ cd /opt
 wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.7.1.62043.zip
 unzip sonarqube-9.7.1.62043.zip
 #SonarQube will work with root user so create a new user sonar
-useradd sonar
+useradd -m sonar
 chown -R sonar:sonar /opt/sonarqube-9.7.1.62043
 su sonar
 bash
