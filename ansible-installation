@@ -1,0 +1,20 @@
+#Step — Installing Ansible
+#run the below commands to install ansible,
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible
+
+#after that create configuration file 
+ansible  --version
+config path = /etc/ansible/ansible.cfg
+ansible-config init --disabled -t all > /etc/ansible/ansible.cfg
+
+#Disable host key checking in ansible.cfg
+322:host_key_checking=False
+738:host_key_checking=False
+833:host_key_checking=False
+
+#ssh public key to remote server
+#generate ssh key for the user who is executing ansible conf and copy the public key to remote server via terraform
+
