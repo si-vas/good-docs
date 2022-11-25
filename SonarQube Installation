@@ -55,7 +55,7 @@ useradd -m sonar
 chown -R sonar:sonar /opt/sonarqube
 su sonar
 bash
-cd /opt/sonarqube-9.7.1.62043
+cd /opt/sonarqube
 cd conf/
 nano sonar.properties
 sonar.jdbc.username=sonar
