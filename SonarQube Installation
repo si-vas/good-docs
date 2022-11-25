@@ -52,7 +52,7 @@ unzip sonarqube-9.7.1.62043.zip
 mv sonarqube-9.7.1.62043 sonarqube
 #SonarQube will work with root user so create a new user sonar
 useradd -m sonar
-chown -R sonar:sonar /opt/sonarqube-9.7.1.62043
+chown -R sonar:sonar /opt/sonarqube
 su sonar
 bash
 cd /opt/sonarqube-9.7.1.62043
