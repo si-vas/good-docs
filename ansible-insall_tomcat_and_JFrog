@@ -13,19 +13,17 @@
      apt:
       name: openjdk-11-jdk
       state: present
-   - name: Permission for opt to Tomcat user
-     file:
-        path: /opt/
-        owner: tomcat
-        group: tomcat
-        mode: 755
-        recurse: yes
    - name: download & unarchive tomcat server
      unarchive:
       src: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.69/bin/apache-tomcat-9.0.69.zip
       dest: /opt/
       remote_src: yes
-
+   - name: Permission for opt to Tomcat user
+     file:
+        path: /opt/apache-tomcat-9.0.69/
+        owner: tomcat
+        group: tomcat
+        mode: 744
    - name: Execute permission tomcat folder
      become: yes
      shell: "mv /opt/apache-tomcat-9.0.69 /opt/tomcat && chmod u+x /opt/tomcat/bin/catalina.sh && chmod u+x /opt/tomcat/bin/startup.sh"
