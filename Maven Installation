@@ -23,6 +23,9 @@ source ./bashrc or . ./bashrc
 Name - maven
 Path - /opt/maven
 
+#.m2 directory will not available default to create you can run below
+mvn help:evaluate -Dexpression=settings.localRepository
+
 #While Build on Jenkins use below command
 Root POM
 pom.xml
