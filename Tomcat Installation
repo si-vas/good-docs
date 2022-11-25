@@ -3,9 +3,9 @@
 
 #if want to make below as script install unzip before running the script.
 cd /opt
-wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.zip
-unzip apache-tomcat-9.0.68.zip
-mv apache-tomcat-9.0.68 tomcat
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.69/bin/apache-tomcat-9.0.69.zip
+unzip apache-tomcat-9.0.69.zip
+mv apache-tomcat-9.0.69 tomcat
 cd /opt/tomcat/bin
 chmod u+x ./catalina.sh
 chmod u+x ./startup.sh
