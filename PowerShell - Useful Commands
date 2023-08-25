@@ -1,0 +1,3 @@
+#If file exists delete for single file copy and update in single line
+if (Test-Path  "D:\Study Material\Sreeharsha\Scripts\Terraform\provisioners\public" ){Remove-Item "D:\Study Material\Sreeharsha\Scripts\Terraform\provisioners\public"; Write-Host "File Removed" } else { Write-Host "File Dosen't Exists" }
+
