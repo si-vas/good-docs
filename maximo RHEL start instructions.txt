@@ -1,0 +1,65 @@
+#Login to ctginst1 user
+[keegosys@localhost ~]$ su - ctginst1
+Password: maxadmin
+
+#start db2server
+[ctginst1@localhost ~]$ db2start
+
+
+#db2 connect to maxdb table
+[ctginst1@localhost ~]$ db2 connect to maxdb76
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 11.1.0
+ SQL authorization ID   = CTGINST1
+ Local database alias   = MAXDB76
+
+#exit from the current user
+[ctginst1@localhost ~]$ exit
+
+#login to root user to start webserver
+[keegosys@localhost bin]$ su - root
+Password: keegosys
+
+#start the AppServer on WebSphere
+[root@localhost ~]# cd /opt/IBM/WebSphere/AppServer/profiles/ctgDmgr01/bin/
+[root@localhost bin]# ./startManager.sh
+
+
+#output of startManager
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/ctgDmgr01/logs/dmgr/startServer.log
+ADMU0128I: Starting tool with the ctgDmgr01 profile
+ADMU3100I: Reading configuration for server: dmgr
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server dmgr open for e-business; process id is 4592
+
+
+#start the maximo application serer
+[root@localhost bin]# cd /opt/IBM/WebSphere/AppServer/profiles/ctgAppSrv01/bin/
+[root@localhost bin]# ./startNode.sh
+
+
+#output of maximo server 
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/ctgAppSrv01/logs/nodeagent/startServer.log
+ADMU0128I: Starting tool with the ctgAppSrv01 profile
+ADMU3100I: Reading configuration for server: nodeagent
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server nodeagent open for e-business; process id is 5130
+
+
+#Login to WebSphere and check the server status
+
+#WebSphere url
+https://localhost:9043/ibm/console/login.do?action=secure
+
+#if MXServer is up and running open maximo application
+#maximo access url
+http://localhost:9080/maximo/webclient/login/login.jsp
+
+
+#check ifconfig ip and access in local browser
+#sample ip to access local system browser
+http://192.168.1.122:9080/maximo/webclient/login/logout.jsp?uisessionid=2&timeout=1
